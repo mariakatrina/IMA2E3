@@ -1,0 +1,246 @@
+@font-face {
+    font-family: 'HeydingsControlsRegular';
+    src: url('fonts/heydings_controls-webfont.eot');
+    src: url('fonts/heydings_controls-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/heydings_controls-webfont.woff') format('woff'),
+         url('fonts/heydings_controls-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+  --main-colour: rgb(0, 198, 119);
+  /* this will be used as the main colour element */
+  --secondary-colour: rgb(15, 17, 16);
+  --complimentary-colour: rgb(255, 234, 0);
+  /* declaring a colour palette to keep neat code 
+  high contrast colours allow for accessibility */
+  /* this colour palette was inspired by the video's colour palette and aesthetic */
+  background-image: linear-gradient(to right, rgb(15, 17, 16), rgb(26, 59, 46));
+}
+
+video {
+  border: 1px solid var(--secondary-colour);
+  width: 80rem;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 3px 3px 5px var(--secondary-colour);
+ }
+
+
+.attribution {
+  position:fixed;
+  bottom:0px;
+  width:100%;
+  color:#DF8453;
+ }
+
+ a {
+  color: var(--main-colour);
+ }
+
+.player {
+  position: absolute;
+  margin: auto;
+  max-width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* 
+.media {
+  max-width: 1000;
+} */
+
+.video-controls {
+  opacity: 0;
+  width: 80rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: absolute;
+  bottom: 0px;
+  align-items: center;
+  background-color: var(--secondary-colour);
+  /* box-shadow: 3px 3px 5px black; */
+  transition: 0.5s all;
+  display: flex;
+}
+
+
+/* removes opacity to show video when mouse isnt 
+hovering over video */
+.video-controls.playing {
+  opacity: 0;
+}
+
+.video-controls:hover {
+  opacity: 1;
+}
+
+/* .audio-controls {
+  visibility: hidden;
+  opacity: 1;
+  width: 400px;
+  border-radius: 10px;
+  position: absolute;
+  background-color: black;
+  box-shadow: 3px 3px 5px black;
+  transition: 1s all;
+  display: flex;
+} */
+
+button, .controls {
+  background: rgb(15, 17, 16, 0.8);
+  cursor: pointer;
+}
+
+.player:hover .controls, player:focus .controls {
+  opacity: 1;
+}
+
+button:before {
+  font-family: HeydingsControlsRegular;
+  font-size: 20px;
+  position: relative;
+  content: attr(data-icon);
+  color: var(--main-colour)
+  /* text-shadow: 1px 1px 0px black; */
+}
+
+.play:before {
+  font-size: 22px;
+}
+
+
+button, .timer {
+  height: 38px;
+  line-height: 19px;
+  /* box-shadow: inset 0 -5px 25px rgba(0,0,0,0.3); */
+  border-right: 1px solid var(--secondary-colour);
+}
+
+button {
+  position: relative;
+  border: 0;
+  flex: .5;
+  outline: none;
+  width: 50px;
+}
+
+
+.timer {
+  line-height: 38px;
+  font-size: 10px;
+  font-family: monospace;
+  color: black;
+  flex: 5;
+  position: relative;
+}
+
+.timer-bar {
+  width: 500px;
+}
+
+.timer div {
+  position: absolute;
+  background-color: rgba(58, 172, 104, 0.2);
+  left: 0;
+  top: 0;
+  width: 0px;
+  height: 38px;
+  z-index: 2;
+}
+
+.timer span {
+  position: absolute;
+  z-index: 3;
+  left: 19px;
+  color:rgb(0, 201, 127);
+}
+
+.vol {
+  flex: 1.5;
+  cursor: pointer;
+  background-color: rgba(255,255,255,0.2);
+}
+
+/* this is the fullscreen properties of the fullscreen button held within an ID */
+#fs {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 0px 10px 10px 0px;
+  line-height: 38px;
+  font-size: 10px;
+  font-family: monospace;
+  color: black;
+  flex: .5;
+}
+
+button:hover,button:focus {
+  box-shadow: inset 1px 1px 2px black;
+}
+
+button:active {
+  box-shadow: inset 3px 3px 2px black;
+}
+
+.active:before {
+  color: red;
+}
+
+.title-word {
+  animation: color-animation 4s linear infinite;
+}
+
+.title-word-1 {
+  --color-1: rgb(223, 132, 83);
+  --color-2: rgb(15, 212, 87);
+  --color-3: rgb(255, 234, 0);
+}
+
+.title-word-2 {
+  --color-1: rgb(219, 173, 74);
+  --color-2: rgb(172, 207, 203);
+  --color-3: rgb(23, 73, 77);
+}
+
+.title-word-3 {
+  --color-1: #ACCFCB;
+  --color-2: #E4A9A8;
+  --color-3: #ACCFCB;
+}
+
+.title-word-4 {
+  --color-1: #3D8DAE;
+  --color-2: #DF8453;
+  --color-3: #E4A9A8;
+}
+
+@keyframes color-animation {
+  0%    {color: var(--color-1)}
+  32%   {color: var(--color-1)}
+  33%   {color: var(--color-2)}
+  65%   {color: var(--color-2)}
+  66%   {color: var(--color-3)}
+  99%   {color: var(--color-3)}
+  100%  {color: var(--color-1)}
+}
+
+/* style for heading */
+
+.container {
+  display: grid;
+  place-items: left;  
+  text-align: left;
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 3rem;
+  text-transform: uppercase;
+}
